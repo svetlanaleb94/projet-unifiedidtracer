@@ -25,7 +25,8 @@
 Test effectuer avec Postman.
 
 1. Test du service "configure"
-   Paramètre d'appel :
+
+    Paramètre d'appel :
    URL : http://localhost:8080/api/idgeneration/configure
    Methode : POST
    Headers : key=Content-Type , Value = application/json   
@@ -34,7 +35,8 @@ Test effectuer avec Postman.
    
    Lancer la requête. Le message "ID generation criteria configured successfully." doit apparaître.
 
-2. Test du service "generate"
+3. Test du service "generate"
+
    Paramètre d'appel :
    URL : http://localhost:8080/api/idgeneration/generate
    Methode : POST
