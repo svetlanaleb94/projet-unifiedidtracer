@@ -17,7 +17,8 @@
 1. Clonez ce dépôt sur votre machine locale :  
    git clone <URL_DU_DEPOT>
    cd <NOM_DU_PROJET>
-   Se positioner sur la branche mater
+   
+   Se positioner sur la branche master
 2. Importer le projet (Import -> Existing maven project) dans Eclipse.
 3.  Exécutez la commande suivante sur le projet pour télécharger les dépendances et construire
    
