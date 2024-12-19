@@ -26,11 +26,16 @@ Test effectuer avec Postman.
 
 1. Test du service "configure"
 
-    Paramètre d'appel :
+   Paramètre d'appel :
+   
    URL : http://localhost:8080/api/idgeneration/configure
+   
    Methode : POST
-   Headers : key=Content-Type , Value = application/json   
-   Body : choisir "raw" et  "JSON"   
+   
+   Headers : key=Content-Type , Value = application/json
+     
+   Body : choisir "raw" et  "JSON"
+     
    Dans le body, ajouter un exemple JSON situé dans le fichier exemples_json.txt à la racine du projet.
    
    Lancer la requête. Le message "ID generation criteria configured successfully." doit apparaître.
@@ -38,10 +43,15 @@ Test effectuer avec Postman.
 3. Test du service "generate"
 
    Paramètre d'appel :
+   
    URL : http://localhost:8080/api/idgeneration/generate
+   
    Methode : POST
-   Headers : key=Content-Type , Value = application/json   
-   Body : choisir "raw" et "JSON"   
+   
+   Headers : key=Content-Type , Value = application/json
+     
+   Body : choisir "raw" et "JSON"
+   
    Dans le body, ajouter un exemple JSON situé dans le fichier exemples_json.txt à la racine du projet.
    
    Lancer la requête. L'ID généré doit apparaître.
