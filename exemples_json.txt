@@ -1,0 +1,125 @@
+
+Cas de test 1
+
+pour lancer le service /configure outiliser json suivant : 
+[
+	{
+		"type" : "lastName", 
+		"length" :3, 
+		"prefix" :"", 
+		"suffix":"-", 
+		"order" : 1,
+		"formatDate" :"", 
+		"initialCounter":0, 
+		"counterFormat":0
+	},
+	{
+		"type" : "firstName", 
+		"length" :4, 
+		"prefix" :"", 
+		"suffix":"_", 
+		"order" : 2,
+		"formatDate" :"", 
+		"initialCounter":0, 
+		"counterFormat":0
+	},
+	{
+		"type" : "dateOfBirth", 
+		"length" :0, 
+		"prefix" :"", 
+		"suffix":"", 
+		"order" : 3,
+		"formatDate" :"YYYY", 
+		"initialCounter":0, 
+		"counterFormat":0
+	},
+	{	
+		"type" : "counter", 
+		"length" :0, 
+		"prefix" :"C", 
+		"suffix":"", 
+		"order" : 4,
+		"formatDate" :"", 
+		"initialCounter":10, 
+		"counterFormat":5
+	}
+
+ ]
+ 
+ pour lancer le service /generate outiliser json suivant : 
+
+	{
+		"lastName" : "Marc", 
+		"firstName" :"PASSAU", 
+		"dateOfBirth" :"1974-04-24"
+		
+	}
+ on obtien le resultat - MAR-PASS_1974C00011
+	
+
+
+	{
+		"lastName" : "Svetlana", 
+		"firstName" :"LEBEDEVA", 
+		"dateOfBirth" :"1985-04-24"
+		
+	}	
+on obtien le resultat - SVE-LEBE_1985C00012
+ 
+ Cas de test 2
+
+pour lancer le service /configure outiliser json suivant : 
+[
+	{
+		"type" : "lastName", 
+		"length" :3, 
+		"prefix" :"", 
+		"suffix":"-", 
+		"order" : 2,
+		"formatDate" :"", 
+		"initialCounter":0, 
+		"counterFormat":0
+	},
+	{
+		"type" : "firstName", 
+		"length" :4, 
+		"prefix" :"", 
+		"suffix":"_", 
+		"order" : 1,
+		"formatDate" :"", 
+		"initialCounter":0, 
+		"counterFormat":0
+	},
+	{
+		"type" : "dateOfBirth", 
+		"length" :0, 
+		"prefix" :"N", 
+		"suffix":"", 
+		"order" : 4,
+		"formatDate" :"YYYY", 
+		"initialCounter":0, 
+		"counterFormat":0
+	},
+	{	
+		"type" : "counter", 
+		"length" :0, 
+		"prefix" :"C", 
+		"suffix":"", 
+		"order" : 3,
+		"formatDate" :"", 
+		"initialCounter":7, 
+		"counterFormat":5
+	}
+
+ ]
+ 
+ pour lancer le service /generate outiliser json suivant : 
+
+	{
+		"lastName" : "Isaac", 
+		"firstName" :"ANTOINE", 
+		"dateOfBirth" :"1992-04-24"
+		
+	}
+
+ 
