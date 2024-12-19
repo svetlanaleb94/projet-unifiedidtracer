@@ -12,12 +12,13 @@ import org.springframework.boot.test.context.SpringBootTest;
 import com.example.unifiedidtracer.core.model.IDCriteria;
 import com.example.unifiedidtracer.core.model.UserDetails;
 import com.example.unifiedidtracer.core.service.IDGenerationService;
+import com.example.unifiedidtracer.exceptions.InvalidCriteriaException;
 
 @SpringBootTest
 class UnifiedidtracerApplicationTests {
 
 	@Autowired
-	private IDGenerationService service;
+	private IDGenerationService service;	
 	
 	@Test
 	void testIdGenerationServiceTestCases1() {
@@ -27,13 +28,17 @@ class UnifiedidtracerApplicationTests {
 	            new IDCriteria("dateOfBirth", 0, "", "", 3,"YYYY", 0, 0),
 	            new IDCriteria("counter", 0, "C", "", 4,"",10, 5)
 	        );
+		
+		try {
+			service.configureCriteria(criteriaList);
+		} catch (InvalidCriteriaException e) {
+			Assert.assertNotNull(e.getMessage());
+		}
 		UserDetails userDetails = new UserDetails("Marc", "PASSAU", "1974-04-24");
-		service.configureCriteria(criteriaList);
-		String result = service.generateID(userDetails);
-		Assert.assertEquals("MAR-PASS_1974C00011", result);
-		UserDetails userDetails1 = new UserDetails("Svetlana", "LEBEDEVA", "1985-04-24");
-		result = service.generateID(userDetails1);
-		Assert.assertEquals("SVE-LEBE_1985C00012", result);
+		Assert.assertEquals("MAR-PASS_1974C00011", service.generateID(userDetails));
+		
+		userDetails = new UserDetails("Svetlana", "LEBEDEVA", "1985-04-24");
+		Assert.assertEquals("SVE-LEBE_1985C00012", service.generateID(userDetails));
 	}
 	
 	@Test
@@ -45,9 +50,12 @@ class UnifiedidtracerApplicationTests {
 	            new IDCriteria("counter", 0, "C", "", 3,"",7, 5)
 	        );
 		UserDetails userDetails = new UserDetails("Isaac", "ANTOINE", "1992-04-24");
-		service.configureCriteria(criteriaList);
-		String result = service.generateID(userDetails);
-		Assert.assertEquals("ANTO_ISA-C00008N1992", result);
+		try {
+			service.configureCriteria(criteriaList);
+		} catch (InvalidCriteriaException e) {
+			Assert.assertNotNull(e.getMessage());
+		}
+		Assert.assertEquals("ANTO_ISA-C00008N1992", service.generateID(userDetails));
 		
 	}
 }

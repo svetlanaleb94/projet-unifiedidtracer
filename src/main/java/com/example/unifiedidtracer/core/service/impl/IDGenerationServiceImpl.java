@@ -2,6 +2,7 @@ package com.example.unifiedidtracer.core.service.impl;
 
 import com.example.unifiedidtracer.core.model.*;
 import com.example.unifiedidtracer.core.service.IDGenerationService;
+import com.example.unifiedidtracer.exceptions.InvalidCriteriaException;
 import com.example.unifiedidtracer.utils.FormatDateUtil;
 
 import org.springframework.stereotype.Service;
@@ -28,9 +29,13 @@ public class IDGenerationServiceImpl implements IDGenerationService {
 	 * Configures the ID generation criteria.
 	 * 
 	 * @param criteriaList List of criteria for ID generation.
+	 * @throws InvalidCriteriaException 
 	 */
 
-	public void configureCriteria(List<IDCriteria> criteriaList) {
+	public void configureCriteria(List<IDCriteria> criteriaList) throws InvalidCriteriaException {
+		 if (criteriaList == null || criteriaList.isEmpty()) {
+		        throw new InvalidCriteriaException("Provided criteria list is null or empty.");
+		    }
 		this.criteriaList = criteriaList.stream().sorted((c1, c2) -> Integer.compare(c1.getOrder(), c2.getOrder()))
 				.collect(Collectors.toList());
 		IDCriteria counterCriteria = criteriaList.stream()
@@ -39,8 +44,9 @@ public class IDGenerationServiceImpl implements IDGenerationService {
                 .orElse(null);
 		 if (counterCriteria != null) {
 			 this.counter = counterCriteria.getInitialCounter();
-		 }
-		
+		 }	else {
+			 throw new InvalidCriteriaException("Counter criteria not found.");
+		 }	
 
 	}
 

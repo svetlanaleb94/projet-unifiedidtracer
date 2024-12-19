@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import com.example.unifiedidtracer.core.service.IDGenerationService;
 import com.example.unifiedidtracer.dto.*;
+import com.example.unifiedidtracer.exceptions.InvalidCriteriaException;
 
 /**
  * REST controller for managing ID generation.
@@ -26,8 +27,13 @@ public class IDGenerationController {
 	 */
 	@PostMapping("/configure")
 	public String configureCriteria(@RequestBody List<CriteriaRequestDTO> criteriaList) {
-		idGenerationService.configureCriteria(criteriaList.stream().map(CriteriaRequestDTO::toModel).toList());
-		return "ID generation criteria configured successfully.";
+		String result = "ID generation criteria configured successfully.";
+		try {
+			idGenerationService.configureCriteria(criteriaList.stream().map(CriteriaRequestDTO::toModel).toList());
+		} catch (InvalidCriteriaException e) {
+			result = "An exception has occurred during criteria creation. Please review the criteria.";
+		}
+		return result;
 	}
 
 	/**

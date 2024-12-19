@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.example.unifiedidtracer.core.model.IDCriteria;
 import com.example.unifiedidtracer.core.model.UserDetails;
+import com.example.unifiedidtracer.exceptions.InvalidCriteriaException;
 
 /**
  * Service interface for ID generation.  
@@ -27,6 +28,6 @@ public interface IDGenerationService {
 	 * 
 	 * @param criteriaList List of criteria for ID generation.
 	 */
-	void configureCriteria(List<IDCriteria> criteriaList);
+	void configureCriteria(List<IDCriteria> criteriaList) throws InvalidCriteriaException;
 
 }
