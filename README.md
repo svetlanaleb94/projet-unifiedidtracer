@@ -2,10 +2,15 @@
 
 ## Prérequis
 **Spring Boot** : version `3.4.0`
+
 **Java** : version `17`
+
 **Maven**  : pour la gestion des dépendances et la compilation du projet
+
 **IDE**  : Eclipse
+
 **Postman** : pour le test de services
+
 
 ## Installation
 
